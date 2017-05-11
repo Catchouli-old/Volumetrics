@@ -46,4 +46,4 @@ Then, compute a ray for each pixel and use your new rayIntersectsSphere function
 
 You should be able to change the origin to get closer to or further away from the sphere, and move left or right. You should also be able to change the sphere's position and radius and see it change.
 
-[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/2.1.glsl)
+[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/2/2.1.glsl)
