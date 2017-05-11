@@ -57,7 +57,7 @@ Output the normal of the surface as a colour instead of white. The normal of a s
 
 If you don't care about knowing how to do this (I don't and usually just copy paste another implementation) you can just grab my rayIntersectSphere function and use that. It's a function that takes a ray (origin and direction), a sphere (centre and radius), and returns two intersection points, the ray entry and the ray exit. In the case where the ray just touches the edge of the sphere these will be the same point.
 
-![ray sphere intersection](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/2/4.PNG)
+![ray sphere intersection](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/2/4.png)
 
 Your function distToRay should already calculate the closest point on a ray to a point. It works on the same principal as the distToLine function which does that and then calculates the quantity a to return.
 
