@@ -25,6 +25,10 @@ The input fragCoord is the position of the current fragment in pixels. The outpu
 
 The program above gets the position of the current pixel, divides it by the resolution to get a normalised value 0 to 1, and then outputs it as a colour. 
 
+The following exercises will direct you through the fundamental glsl, vector maths, and geometry knowledge needed for eventually implementing a volume ray tracer. Part 2 will then extend these techniques to 3d, introducing ray casting.
+
+To follow along, attempt the exercise and then compare to my solution. If your solution is different, analyse why, as it might be important in the following exercises. Each step should leave you with a functioning shader, producing something similar to the image provided.
+
 ## 1.1 - Draw the flag of France
 
 Modify the default shader to output the flag of France. By outputting a different colour depending on the value of uv, you should be able to produce a different output on different parts of the screen. 
@@ -35,8 +39,12 @@ Modify the default shader to output the flag of France. By outputting a differen
 
 ## 1.2 - Draw a circle
 
-Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape.
+Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape. I recommend remapping your UV coordinates to the range [-1, 1] instead of [0, 1] as it will be more useful to you.
 
 ![1.2 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.2.PNG)
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.2.glsl)
+
+## 1.3 - Draw a line
+
+Extend your solution to 1.2 so that you can also draw a line segment. The line segment should be defined by two vectors a and b, in two dimensions.
