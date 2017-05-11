@@ -68,9 +68,9 @@ Diffuse reflection can be approximated by lambert's cosine law. The radiant inte
 
 At this point the following equation for dot product should be remembered:
 
-dot a b = |a| |b| cos(theta)
+dot a b = length(a) * length(b) * cos(theta)
 
-Where a and b are vectors, |a| and |b| are their magnitudes, and theta is the angle between them. If we normalise the vectors a and be we get 'dot a b = cos(theta)', which eliminates the need to calculate the angle.
+Where a and b are vectors, length(a) and length(b) are their magnitudes, and theta is the angle between them. If we normalise the vectors a and be we get 'dot a b = cos(theta)', which eliminates the need to calculate the angle.
 
 In other words, for a diffuse surface:
 ```
