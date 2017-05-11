@@ -80,3 +80,26 @@ float distToLine(vec2 a, vec2 b, vec2 p)
 Extend your solution to 1.2 so that you can also draw a line segment. The line segment should be defined by two vectors a and b, in two dimensions.
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.3.glsl)
+
+## 1.4 - Draw multiple circles and a line segment
+
+![1.4 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.4.PNG)
+
+Extend your solution to 1.3 to draw the following circles and line segment:
+
+```
+vec4 segment = vec4(-0.9, -0.5, 0.7, 0.1);
+const int circleCount = 7;
+vec3 circles[circleCount];
+circles[0] = vec3(-0.7, 0.4, 0.1);
+circles[1] = vec3(-0.5, 0.1, 0.1);
+circles[2] = vec3(0.0, 0.4, 0.1);
+circles[3] = vec3(0.2, -0.4, 0.1);
+circles[4] = vec3(0.5, 0.0, 0.1);
+circles[5] = vec3(-0.8, -0.4, 0.1);
+circles[6] = vec3(0.0, 0.0, 0.1);
+```
+
+Circles are in the form vec3(x, y, radius).
+
+[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.4.glsl)
