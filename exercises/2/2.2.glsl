@@ -1,40 +1,30 @@
-bool rayIntersectSphere(vec3 origin, vec3 direction, vec4 sphere, out vec2 hit)
-{
-    vec3 a = origin;
-    vec3 b = origin + direction * 1000.0;
-    vec3 p = sphere.xyz;
-    
-    vec3 dist = p - a;
-    vec3 diff = b - a;
-    float dotProduct = dot(dist, diff);
-    float lengthSquared = dot(diff, diff);
-    float t = dotProduct / lengthSquared;
-    
-    vec3 nearestPoint;
-    
-    if (t < 0.0)
-        nearestPoint = a;
-    else if (t > 1.0)
-        nearestPoint = b;
-    else
-        nearestPoint = a + t * diff;
-        
-    float distToCentre = length(nearestPoint - sphere.xyz);
-    
-    if (distToCentre < sphere.w) {
-        float c = sqrt(distToCentre * distToCentre + sphere.w * sphere.w);
-    	float distToNearestPoint = length(nearestPoint - origin);
-        
-        float t0 = distToNearestPoint - c;
-        float t1 = distToNearestPoint + c;
-        
-        hit = vec2(t0, t1);
-        
-        return true;
+bool rayIntersectSphere(vec3 origin, vec3 direction, vec4 sphere, out vec2 intersectionPoints) {
+  float c = length(origin - sphere.xyz) - sphere.w*sphere.w ;
+  float dotVal = dot(direction, (origin - sphere.xyz));
+  float sqrtVal = dotVal*dotVal - dot(origin - sphere.xyz, origin - sphere.xyz) + sphere.w*sphere.w ;
+  if (sqrtVal <= 0.0) {
+    return false ;
+  }
+  if (sqrtVal == 0.0) {
+    intersectionPoints.x = -dotVal ;
+    intersectionPoints.y = -dotVal ;
+    return true ;
+  }
+  else {
+    float d1 = -(dotVal) + sqrt(sqrtVal) ;
+    float d2 = -(dotVal) - sqrt(sqrtVal) ;
+    if (d1 < 0.0 && d2 < 0.0) {
+      return false ;
+    } else if (d1 < 0.0 || d2 < 0.0) {
+      intersectionPoints.x = min(d1,d2) ;
+      intersectionPoints.y = max(d1,d2) ;
+      return true ;
+    } else {
+      intersectionPoints.x = min(d1,d2) ;
+      intersectionPoints.y = max(d1,d2) ;
+      return true ;
     }
-    else {
-        return false;
-    }
+  }
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
@@ -55,13 +45,16 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec3 direction = normalize(vec3(coord.x, coord.y, 1));
     
     // our scene, a single sphere at (0, 0, 10) with radius 1
-    vec4 sphere = vec4(0.0, 0, 10, 3);
+    vec4 sphere = vec4(0.0, 0.0, 10, 4);
     
     vec2 hit;
     if (rayIntersectSphere(origin, direction, sphere, hit)) {
-        vec3 hitPoint = origin + hit.x * direction;
+        vec3 hitPoint = origin + hit.y * direction;
         vec3 normal = normalize(hitPoint - sphere.xyz);
-        fragColor = vec4(normal, 1.0);
+        vec3 lightPoint = vec3(0.0, 5.0, 10.0);
+        vec3 lightDir = lightPoint - hitPoint;
+        float diffuseIntensity = dot(lightDir, normal);
+        fragColor = vec4(normal * vec3(1.0), 1.0);
     }
     else
         fragColor = vec4(0.0);
