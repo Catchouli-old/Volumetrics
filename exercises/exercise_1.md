@@ -29,7 +29,7 @@ Modify the default shader to output the flag of France. By outputting a differen
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.1.glsl)
 
-### 1.1 - Draw a circle
+### 1.2 - Draw a circle
 
 Modify the default shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape.
 
