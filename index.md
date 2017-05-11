@@ -1,6 +1,6 @@
 ## Beginning volumetric rendering
 
 ### Exercises
-[Exercise 1 - Introduction to fragment shaders](exercises/exercise_1.md)
+[Exercise 1 - Fragment shaders and vector geometry](exercises/exercise_1.md)
 
-[Exercise 2 - Introduction to ray tracing](exercises/exercise_2.md)
+[Exercise 2 - Extending to the third dimension, ray casting](exercises/exercise_2.md)
