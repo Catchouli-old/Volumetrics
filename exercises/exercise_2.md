@@ -53,29 +53,33 @@ For fun try using an animated value for the position, or radius, such as sin(iGl
 ### 2.2 - Normals
 ![2.2 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/2/2.2.PNG)
 
-Output the normal of the surface as a colour instead of white. The normal of a surface is the direction pointing straight up out of it. To calculate the normal of a point on the surface of a sphere, all you need to do is take the direction from the centre of the sphere to the point and normalise it. All you need to do, then, is to find the point your ray intersects with.
+The normal is the vector pointing straight up out of a surface. The normal of a point on a sphere's surface is normalize(point - sphere centre). Implement the ray sphere intersection formula [found here](http://www.ccs.neu.edu/home/fell/CSU540/programs/RayTracingFormulas.htm) and use it to find the distance down the ray at which the ray intersects the sphere (if it does). If it does, use that distance to calculate the point of intersection, and use the point of intersection to calculate the normal. Output the normal as the colour of the sphere, or black if it misses.
 
-If you don't care about knowing how to do this (I don't and usually just copy paste another implementation) you can just grab my rayIntersectSphere function and use that. It's a function that takes a ray (origin and direction), a sphere (centre and radius), and returns two intersection points, the ray entry and the ray exit. In the case where the ray just touches the edge of the sphere these will be the same point.
-
-![ray sphere intersection](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/2/4.png)
-
-Your function distToRay should already calculate the closest point on a ray to a point. It works on the same principal as the distToLine function which does that and then calculates the quantity a to return.
-
-The distance from the origin to the 'point we actually want' can be done by finding the distance from the origin to the 'closest point to centre', and then subtracting the quantity c. e.g. length(closest point to centre - origin) - c. That point can then by found by simply doing origin + distance * direction.
-
-The only thing left to do is find c. The triangle abc is actually a right angle triangle, and you already know the value a because it's the return value of distToSphere, and b is just the radius of the sphere, since it's the distance between the centre of the sphere and a point on its surface. The value c can then be found by pythagoras: c = sqrt(a^2 + b^2):
-
-```
-a = length(closest point to centre - centre)
-b = radius
-c = sqrt(a^2 + b^2)
-distance down the ray to intersection point = length(closest point to centre - origin) - c
-intersection point = origin + distance * direction
-
-// and then....
-normal = normalize(intersection point - centre)
-```
-
-The exit point can be found in the same way, but by adding c to get the distance instead. You may want to handle the case where a = the radius, in which case there is only one intersection point, as the ray just touches the sphere's surface.
+You can use out parameters to return an extra value from a function. For example: bool test(out float x) { x = 5.0; return true; }
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/2/2.2.glsl)
+
+### 2.3 - Diffuse reflection
+![2.3 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/2/2.3.PNG)
+
+Diffuse reflection is the light that's reflected in every direction from a surface, and results in an even scattering of coloured light depending on the colour and orientation of the surface. Our initial lighting model will only consider diffuse reflection, and will only properly represent completely diffuse materials, but will allow us to see the shape of an object and the effect of the lighting parameters on it.
+
+Diffuse reflection can be approximated by lambert's cosine law. The radiant intensity, or the light coming from a surface, is directly proportional to the cosine of the angle between the light direction, and the normal of the surface. This effect is independent of view direction, meaning that an illuminated point's diffuse reflection will always stay the same no matter what angle or position you look at it from.
+
+At this point the following equation for dot product should be remembered:
+
+dot a b = |a| |b| cos(theta)
+
+Where a and b are vectors, |a| and |b| are their magnitudes, and theta is the angle between them. If we normalise the vectors a and be we get 'dot a b = cos(theta)', which eliminates the need to calculate the angle.
+
+In other words, for a diffuse surface:
+```
+light direction = point being illuminated - light position (for a point light)
+reflected light = surface colour * dot(light direction, surface normal)
+```
+
+Choose a light position (somewhere between you and the object so that it lights the correct side), and apply the above formula to your surface normal, and output the reflected light. You should be able to see a 3d object.
+
+For my reference image above, the sphere is at (0, 0, 10) with radius 4, and the light is at (10, 10, 0).
+
+[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/2/2.3.glsl)
