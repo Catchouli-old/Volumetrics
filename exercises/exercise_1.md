@@ -1,5 +1,5 @@
 ## Exercise 1
-### First fragment shaders
+## First fragment shaders
 
 The purpose of this exercise is to familiarise you with fragment shaders. At the end of it, you will have drawn your first 2D shape using a fragment shader, and should understand how to create an image using a fragment shader by specifying the value of each pixel.
 
@@ -25,7 +25,7 @@ The input fragCoord is the position of the current fragment in pixels. The outpu
 
 The program above gets the position of the current pixel, divides it by the resolution to get a normalised value 0 to 1, and then outputs it as a colour. 
 
-### 1.1 - Draw the flag of France
+## 1.1 - Draw the flag of France
 
 Modify the default shader to output the flag of France. By outputting a different colour depending on the value of uv, you should be able to produce a different output on different parts of the screen. 
 
@@ -33,7 +33,7 @@ Modify the default shader to output the flag of France. By outputting a differen
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.1.glsl)
 
-### 1.2 - Draw a circle
+## 1.2 - Draw a circle
 
 Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape.
 
