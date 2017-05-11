@@ -103,3 +103,13 @@ circles[6] = vec3(0.0, 0.0, 0.1);
 Circles are in the form vec3(x, y, radius).
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.4.glsl)
+
+## 1.5 - Colour intersecting circles
+
+![1.5 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.5.PNG)
+
+Use the function distToLine given in 1.3 to write a function that checks if a line segment intersects a circle. Use this function to colour intersecting circles red.
+
+Once you're at this point, you're basically ray casting in 2D. Ray casting involves intersecting a ray from the origin (the eye position, for example) with objects in the scene to create a 3D image. In the next section we will discuss ray casting, what it approximates, and what it represents, and then we will extend this concept to 3D to produce an image of a 3D scene.
+
+[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.5.glsl)
