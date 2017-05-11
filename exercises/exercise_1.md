@@ -1,7 +1,7 @@
 ## Exercise 1
 ### First fragment shaders
 
-https://www.shadertoy.com/new
+[shadertoy](https://www.shadertoy.com/new)
 
 A fragment shader is a program that decides the colour for a pixel on the screen. It has inputs, such as the pixel's position on the screen, the current time, texture coordinates, or anything that can be passed in from the cpu or inferred from the attributes of a 3d model. For shadertoy, a single fullscreen rectangle is drawn, with the fragment shader being invoked for every pixel in the image.
 
