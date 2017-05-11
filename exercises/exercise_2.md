@@ -80,6 +80,6 @@ reflected light = surface colour * dot(light direction, surface normal)
 
 Choose a light position (somewhere between you and the object so that it lights the correct side), and apply the above formula to your surface normal, and output the reflected light. You should be able to see a 3d object.
 
-For my reference image above, the sphere is at (0, 0, 10) with radius 4, and the light is at (10, 10, 0).
+For my reference image above, the sphere is at (0, 0, 10) with radius 4, and the light is at (10, 10, 0). The light colour is (1, 1, 1) white.
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/2/2.3.glsl)
