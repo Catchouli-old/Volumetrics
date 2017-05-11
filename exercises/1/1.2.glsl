@@ -1,7 +1,7 @@
 bool pointInCircle(vec2 point, vec2 circlePos, float radius)
 {
     vec2 dist = point - circlePos;
-    return dist.x * dist.x + dist.y * dist.y > radius * radius;
+    return dist.x * dist.x + dist.y * dist.y < radius * radius;
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
