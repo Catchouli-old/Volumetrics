@@ -1,7 +1,9 @@
 ## Exercise 1
 ### First fragment shaders
 
-[shadertoy](https://www.shadertoy.com/new)
+The purpose of this exercise is to familiarise you with fragment shaders. At the end of it, you will have drawn your first 2D shape using a fragment shader, and should understand how to create an image using a fragment shader by specifying the value of each pixel.
+
+https://www.shadertoy.com/new
 
 A fragment shader is a program that decides the colour for a pixel on the screen. It has inputs, such as the pixel's position on the screen, the current time, texture coordinates, or anything that can be passed in from the cpu or inferred from the attributes of a 3d model. For shadertoy, a single fullscreen rectangle is drawn, with the fragment shader being invoked for every pixel in the image.
 
@@ -33,7 +35,7 @@ Modify the default shader to output the flag of France. By outputting a differen
 
 ### 1.2 - Draw a circle
 
-Modify the default shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape.
+Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape.
 
 ![1.2 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.2.PNG)
 
