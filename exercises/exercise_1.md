@@ -22,7 +22,7 @@ The output is the following:
 ![shader output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/0.PNG)
 
 The input fragCoord is the position of the current fragment in pixels. The output fragColor is the resulting colour in the pixel. iResolution and iGlobalTime are built in 'uniform' inputs, which means that the values are the same across the whole shader invocation (for all pixels). A full list of available inputs can be seen on the shadertoy editor by clicking 'Shader Inputs' above the code panel.
-
+k
 The program above gets the position of the current pixel, divides it by the resolution to get a normalised value 0 to 1, and then outputs it as a colour. 
 
 The following exercises will direct you through the fundamental glsl, vector maths, and geometry knowledge needed for eventually implementing a volume ray tracer. Part 2 will then extend these techniques to 3d, introducing ray casting.
