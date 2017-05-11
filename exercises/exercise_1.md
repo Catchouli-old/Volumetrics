@@ -1,5 +1,5 @@
 ## Exercise 1
-## Introduction to fragment shaders and vector geometry
+## Fragment shaders and vector geometry
 
 The purpose of this exercise is to familiarise you with fragment shaders. At the end of it, you will have drawn your first 2D shape using a fragment shader, and should understand how to create an image using a fragment shader by specifying the value of each pixel.
 
