@@ -39,12 +39,44 @@ Modify the default shader to output the flag of France. By outputting a differen
 
 ## 1.2 - Draw a circle
 
-Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape. I recommend remapping your UV coordinates to the range [-1, 1] instead of [0, 1] as it will be more useful to you.
+Modify your shader to draw a circle. By checking if the position of the current pixel is within the bounds of a shape, it should be possible to draw any shape. I recommend remapping your UV coordinates to the range [-1, 1] instead of [0, 1] as it will be more useful to you. Pay careful attention to the aspect ratio of the image, noting that because it is not square and that the coordinates are normalised, some correction will need to be applied in order to produce a circle instead of an ellipse.
 
 ![1.2 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.2.PNG)
 
 [Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.2.glsl)
 
-## 1.3 - Draw a line
+## 1.3 - Draw a line segment
+
+![1.3 expected output](https://raw.githubusercontent.com/Catchouli/Volumetrics/master/exercises/1/1.3.PNG)
+
+The following function tells you the distance of a point from a line segment a b:
+
+```
+float distToLine(vec2 a, vec2 b, vec2 p)
+{
+  vec2 dist = p - a;
+  vec2 diff = b - a;
+  float d = dot(dist, diff);
+  float lengthSquared = dot(diff, diff);
+  // distance from a to b of nearest point on segment to point p
+  float t = d / lengthSquared;
+    
+  vec2 nearestPoint;
+    
+  if (t < 0.0) {
+	nearestPoint = a;
+  }
+  else if (t > 1.0) {
+	nearestPoint = b;
+  }
+  else {
+    nearestPoint = a + t * diff;  
+  }
+  
+  return length(nearestPoint - p);
+}
+```
 
 Extend your solution to 1.2 so that you can also draw a line segment. The line segment should be defined by two vectors a and b, in two dimensions.
+
+[Solution](https://github.com/Catchouli/Volumetrics/blob/master/exercises/1/1.3.glsl)
